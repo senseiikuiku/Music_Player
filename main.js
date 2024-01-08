@@ -31,11 +31,19 @@ const prevBtn = $(".btn-prev");
 const randomBtn = $(".btn-random");
 const repeatBtn = $(".btn-repeat");
 
+const downVolumeBtn = $(".btn-down-volume");
+const upVolumeBtn = $(".btn-up-volume");
+const volumeSlider = $(".volume-slider");
+
+const currentTimeRunSong = $(".current-time");
+const sumTimeSong = $(".duration");
+
 const app = {
     currentIndex: 0,
     isPlaying: false,
     isRandom: false,
     isRepeat: false,
+    currentVolume: 1,
     congfig: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
     songs: [
         {
@@ -155,9 +163,7 @@ const app = {
 
             cd.style.width = newCdWidth > 100 ? newCdWidth + "px" : 100 + "px";
             cd.style.opacity =
-                newCdWidth / scrollTop > 0.6
-                    ? newCdWidth / scrollTop
-                    : 0.5 ;
+                newCdWidth / scrollTop > 0.6 ? newCdWidth / scrollTop : 0.5;
         };
 
         // Xử lý khi click play
@@ -191,10 +197,28 @@ const app = {
                 );
                 progress.value = progressPercent;
             }
+
+            // Xử lý tài nguyên audio được tải
+            const currentMinutes = Math.floor(audio.currentTime / 60);
+            const currentSenconds = Math.floor(audio.currentTime % 60);
+            // Hiển thị thời gian hiện tại ở định dạng phút và giây
+            currentTimeRunSong.textContent = `${currentMinutes}:${
+                currentSenconds < 10 ? "0" : ""
+            }${currentSenconds} `;
+        };
+
+        // Khi tài nguyên audio được tải
+        audio.onloadedmetadata = function () {
+            const durationMinutes = Math.floor(audio.duration / 60);
+            const durationSenconds = Math.floor(audio.duration % 60);
+            // Hiển thị tổng thời gian của 1 Song
+            sumTimeSong.textContent = `${durationMinutes}:${
+                durationSenconds < 10 ? "0" : ""
+            }${durationSenconds}`;
         };
 
         // Xử lý khi tua song
-        progress.onchange = function (e) {
+        progress.oninput = function (e) {
             const seekTime = (audio.duration / 100) * e.target.value;
             audio.currentTime = seekTime;
         };
@@ -207,8 +231,8 @@ const app = {
                 _this.nextSong();
             }
             audio.play();
-            _this.render();
             _this.scrollToActiveSong();
+            _this.render();
         };
 
         // Khi prev song
@@ -221,6 +245,7 @@ const app = {
             audio.play();
             _this.render();
             _this.scrollToActiveSong();
+            _this.scrollToTopOnFirstSong();
         };
 
         // Xử lý bật / tắt random song
@@ -246,6 +271,32 @@ const app = {
             }
         };
 
+        // Xử lý tăng âm lượng
+        upVolumeBtn.onclick = function () {
+            if (audio.volume < 1)
+                audio.volume = parseFloat(audio.volume + 0.1).toFixed(1);
+            _this.setConfig("currentVolume", audio.volume);
+        };
+
+        // Xử lý giảm âm lượng
+        downVolumeBtn.onclick = function () {
+            if (audio.volume > 0) {
+                audio.volume = parseFloat(audio.volume - 0.1).toFixed(1);
+                _this.setConfig("currentVolume", audio.volume);
+            }
+        };
+
+        // Xử lý khi kéo thanh âm lượng
+        volumeSlider.oninput = function () {
+            audio.volume = parseFloat(this.value);
+            _this.setConfig("currentVolum", this.value);
+        };
+
+        // Cập nhật giá trị khi kéo Volume
+        audio.onvolumechange = function () {
+            volumeSlider.value = audio.volume;
+        };
+
         // Lắng nghe hành vi vào playlist
         playlist.onclick = function (e) {
             const songNode = e.target.closest(".song:not(.active)");
@@ -268,7 +319,7 @@ const app = {
         setTimeout(() => {
             $(".song.active").scrollIntoView({
                 behavior: "smooth",
-                block: "center",
+                block: "nearest",
             });
         }, 300);
     },
@@ -276,17 +327,34 @@ const app = {
         heading.textContent = this.currentSong.name;
         cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`;
         audio.src = this.currentSong.path;
+        this.setConfig("currentIndex", this.currentIndex);
     },
     loadConfig: function () {
         this.isRandom = this.congfig.isRandom;
         this.isRepeat = this.congfig.isRepeat;
+        this.currentIndex = this.congfig.currentIndex;
+        if (this.congfig.currentVolume != null) {
+            volumeSlider.volume = this.congfig.currentVolume;
+            audio.volume = this.congfig.currentVolume;
+        }
     },
+    scrollToTop: function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    },
+
     nextSong: function () {
         this.currentIndex++;
         if (this.currentIndex >= this.songs.length) {
             this.currentIndex = 0;
+            this.loadCurrentSong();
+            this.render();
+            this.scrollToTop();
+        } else {
+            this.loadCurrentSong();
         }
-        this.loadCurrentSong();
     },
     prevSong: function () {
         this.currentIndex--;

@@ -18,6 +18,30 @@ html {
     font-family: "Poppins", sans-serif;
 }
 
+.volume-slider {
+    display: block;
+    margin: 0 auto;
+}
+
+.btn-volume {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btn-volume {
+    display: inline-block;
+    margin: 0 20px;
+}
+
 .player {
     position: relative;
     max-width: 480px;
@@ -130,16 +154,17 @@ header h2 {
     cursor: pointer;
 }
 
+.time {
+    display: flex;
+    justify-content: space-between;
+}
+
 /* PLAYLIST */
 
 .playlist {
-    scroll-behavior: smooth;
-    height: 370px;
-    transform: translate(-50%, 108%);
+    margin-top: calc(95%);
     padding: 12px;
-    position: fixed;
-    left: 50%;
-    width: 460px;
+    height: 370px;
     overflow: scroll;
 }
 
@@ -247,10 +272,9 @@ header h2 {
     }
 
     .playlist {
-        height: 350px;
-        transform: translate(-50%, 97%);
-        width: 100%;
-        max-width: 400px;
+        margin-top: calc(99% + 24px);
+        padding: 0px 24px 24px 24px;
+        height: 250px;
     }
 
     .song {
