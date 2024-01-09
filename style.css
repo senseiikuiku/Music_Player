@@ -18,6 +18,10 @@ html {
     font-family: "Poppins", sans-serif;
 }
 
+.btn {
+    cursor: pointer;
+}
+
 .volume-slider {
     display: block;
     margin: 0 auto;
@@ -162,7 +166,7 @@ header h2 {
 /* PLAYLIST */
 
 .playlist {
-    margin-top: calc(95%);
+    margin-top: calc(100%);
     padding: 12px;
     height: 370px;
     overflow: scroll;

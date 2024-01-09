@@ -148,7 +148,7 @@ const app = {
         const cdThumbAnimate = cdThumb.animate(
             [{ transform: "rotate(360deg)" }],
             {
-                duration: 8000, // quay 1 vòng trong 10 seconds
+                duration: 8000, // quay 1 vòng trong 8 seconds
                 iterations: Infinity,
             }
         );
@@ -158,7 +158,6 @@ const app = {
         document.onscroll = function () {
             const scrollTop =
                 window.scrollY || document.documentElement.scrollTop;
-            console.log(scrollTop);
             const newCdWidth = cdWidth - scrollTop;
 
             cd.style.width = newCdWidth > 100 ? newCdWidth + "px" : 100 + "px";
@@ -174,7 +173,6 @@ const app = {
                 audio.play();
             }
         };
-        console.log(cdThumbAnimate);
         // Khi song được play
         audio.onplay = function () {
             _this.isPlaying = true;
@@ -231,8 +229,8 @@ const app = {
                 _this.nextSong();
             }
             audio.play();
-            _this.scrollToActiveSong();
             _this.render();
+            _this.scrollToActiveSong();
         };
 
         // Khi prev song
@@ -289,7 +287,7 @@ const app = {
         // Xử lý khi kéo thanh âm lượng
         volumeSlider.oninput = function () {
             audio.volume = parseFloat(this.value);
-            _this.setConfig("currentVolum", this.value);
+            _this.setConfig("currentVolume", this.value);
         };
 
         // Cập nhật giá trị khi kéo Volume
@@ -324,10 +322,15 @@ const app = {
         }, 300);
     },
     loadCurrentSong: function () {
+    if (this.currentSong) {
         heading.textContent = this.currentSong.name;
         cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`;
         audio.src = this.currentSong.path;
         this.setConfig("currentIndex", this.currentIndex);
+    } else {
+        // Xử lý nếu không có bài hát hiện tại
+        console.error("Không có bài hát hiện tại");
+    }
     },
     loadConfig: function () {
         this.isRandom = this.congfig.isRandom;
@@ -349,9 +352,9 @@ const app = {
         this.currentIndex++;
         if (this.currentIndex >= this.songs.length) {
             this.currentIndex = 0;
-            this.loadCurrentSong();
             this.render();
             this.scrollToTop();
+            this.loadCurrentSong();
         } else {
             this.loadCurrentSong();
         }
