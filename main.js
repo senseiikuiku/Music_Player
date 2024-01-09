@@ -38,11 +38,15 @@ const volumeSlider = $(".volume-slider");
 const currentTimeRunSong = $(".current-time");
 const sumTimeSong = $(".duration");
 
+const bg_shine = $(".fa-sun");
+const body_bg = $("body");
+
 const app = {
     currentIndex: 0,
     isPlaying: false,
     isRandom: false,
     isRepeat: false,
+    isBg: false,
     currentVolume: 1,
     congfig: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
     songs: [
@@ -162,7 +166,7 @@ const app = {
 
             cd.style.width = newCdWidth > 100 ? newCdWidth + "px" : 100 + "px";
             cd.style.opacity =
-                newCdWidth / scrollTop > 0.6 ? newCdWidth / scrollTop : 0.5;
+                newCdWidth / scrollTop > 0.6 ? newCdWidth / scrollTop : 1;
         };
 
         // Xử lý khi click play
@@ -269,6 +273,17 @@ const app = {
             }
         };
 
+        // Xử lý thay đổi Background
+        bg_shine.onclick = function () {
+            _this.isBg = !_this.isBg;
+            _this.setConfig("isBg", _this.isBg);
+            if (_this.isBg) {
+                body_bg.classList.add("body-bg");
+            } else {
+                body_bg.classList.remove("body-bg");
+            }
+        };
+
         // Xử lý tăng âm lượng
         upVolumeBtn.onclick = function () {
             if (audio.volume < 1)
@@ -322,23 +337,29 @@ const app = {
         }, 300);
     },
     loadCurrentSong: function () {
-    if (this.currentSong) {
-        heading.textContent = this.currentSong.name;
-        cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`;
-        audio.src = this.currentSong.path;
-        this.setConfig("currentIndex", this.currentIndex);
-    } else {
-        // Xử lý nếu không có bài hát hiện tại
-        console.error("Không có bài hát hiện tại");
-    }
+        if (this.currentSong) {
+            heading.textContent = this.currentSong.name;
+            cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`;
+            audio.src = this.currentSong.path;
+            this.setConfig("currentIndex", this.currentIndex);
+        } else {
+            // Xử lý nếu không có bài hát hiện tại
+            console.error("Không có bài hát hiện tại");
+        }
     },
     loadConfig: function () {
         this.isRandom = this.congfig.isRandom;
         this.isRepeat = this.congfig.isRepeat;
         this.currentIndex = this.congfig.currentIndex;
+        this.isBg = this.congfig.isBg;
         if (this.congfig.currentVolume != null) {
             volumeSlider.volume = this.congfig.currentVolume;
             audio.volume = this.congfig.currentVolume;
+        }
+        if (this.isBg) {
+            body_bg.classList.add("body-bg");
+        } else {
+            body_bg.classList.remove("body-bg");
         }
     },
     scrollToTop: function () {
