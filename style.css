@@ -10,6 +10,7 @@
 }
 
 body {
+    height: 100%;
     transition: all 0.5s linear;
     background: url(https://nhadepso.com/wp-content/uploads/2023/01/note-ngay-50-anh-bau-troi-buon-dep-tam-trang-tinh-mich_18.jpg)
         no-repeat;
@@ -304,7 +305,7 @@ header h2 {
     }
 
     .player {
-        height: 100vh;
+        height: 100%;
         top: -10px;
         width: 100%;
         max-width: 400px;
@@ -384,12 +385,11 @@ header h2 {
 /* Iphone 6/7/8 plus */
 @media only screen and (min-width: 414px) and (max-width: 736px) {
     body {
-        height: 100vh;
         background-color: #f5f5f5;
     }
 
     .app-container {
-        height: 100vh;
+        height: 100%;
         display: grid;
         flex-direction: column;
         align-items: center;
@@ -397,7 +397,7 @@ header h2 {
     }
 
     .player {
-        height: 100vh;
+        height: 100%;
         top: -10px;
         width: 100%;
         max-width: 400px;
@@ -438,10 +438,10 @@ header h2 {
     }
 
     .playlist {
-        margin-top: 513px;
+        margin-top: 468px;
         position: relative;
         padding: 0px 24px 24px 24px;
-        height: 192px;
+        height: 128px;
     }
 
     .song {
@@ -489,7 +489,7 @@ header h2 {
     }
 
     .player {
-        height: 100vh;
+        height: 100%;
         top: -10px;
         width: 100%;
         max-width: 400px;
@@ -580,7 +580,7 @@ header h2 {
     }
 
     .player {
-        height: 100vh;
+        height: 100%;
         top: -10px;
         width: 100%;
         max-width: 400px;
@@ -620,10 +620,10 @@ header h2 {
     }
 
     .playlist {
-        margin-top: 513px;
+        margin-top: 490px;
         position: relative;
         padding: 0px 24px 24px 24px;
-        height: 500px;
+        height: 400px;
     }
 
     .song {

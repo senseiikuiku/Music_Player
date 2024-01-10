@@ -417,10 +417,11 @@ const app = {
         // Render playlist
         this.render();
 
-        // Hiển thị trang thái ban đầu của button repeat & random
+        // Hiển thị trang thái ban đầu của button repeat & random & background
         randomBtn.classList.toggle("active", this.isRandom);
         repeatBtn.classList.toggle("active", this.isRepeat);
         bg_shine.classList.toggle("body-bg", this.isBg);
+
     },
 };
 
