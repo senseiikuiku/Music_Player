@@ -247,7 +247,6 @@ const app = {
             audio.play();
             _this.render();
             _this.scrollToActiveSong();
-            _this.scrollToTopOnFirstSong();
         };
 
         // Xử lý bật / tắt random song
@@ -368,6 +367,12 @@ const app = {
             behavior: "smooth",
         });
     },
+    scrollToTopPlayList: function () {
+        playlist.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    },
 
     nextSong: function () {
         this.currentIndex++;
@@ -415,6 +420,7 @@ const app = {
         // Hiển thị trang thái ban đầu của button repeat & random
         randomBtn.classList.toggle("active", this.isRandom);
         repeatBtn.classList.toggle("active", this.isRepeat);
+        bg_shine.classList.toggle("body-bg", this.isBg);
     },
 };
 

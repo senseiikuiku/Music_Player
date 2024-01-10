@@ -290,7 +290,280 @@ header h2 {
     font-size: 18px;
 }
 
-@media only screen and (max-width: 600px) {
+/* Iphone SE */
+@media only screen and (min-width: 375px) and (max-width: 667px) {
+    body {
+        background-color: #f5f5f5;
+    }
+
+    .app-container {
+        display: grid;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .player {
+        height: 100vh;
+        top: -10px;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .dashboard {
+        left: 50%;
+        transform: translate(-50%, 0%);
+        position: absolute;
+        max-width: 85%;
+        height: auto;
+    }
+
+    header h4 {
+        font-size: 14px;
+    }
+
+    header h2 {
+        font-size: 18px;
+    }
+
+    .cd {
+        width: 150px;
+        margin-bottom: 10px;
+    }
+
+    .control {
+        padding: 10px 0 4px 0;
+    }
+
+    .control .btn {
+        padding: 12px;
+        font-size: 18px;
+    }
+
+    .progress {
+        height: 4px;
+    }
+
+    .playlist {
+        margin-top: 513px;
+        position: relative;
+        padding: 0px 24px 24px 24px;
+        height: 148px;
+    }
+
+    .song {
+        height: fit-content;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+    }
+
+    .song .thumb {
+        width: 40px;
+        height: 40px;
+    }
+
+    .song .body {
+        padding: 0 10px;
+    }
+
+    .song .title {
+        font-size: 16px;
+    }
+
+    .song .author {
+        font-size: 12px;
+    }
+
+    .song .option {
+        padding: 12px 6px;
+        font-size: 18px;
+    }
+}
+
+/* Kích thước rất nhỏ */
+@media only screen and (max-width: 374px) {
+    body {
+        background-color: #f5f5f5;
+    }
+
+    .app-container {
+        display: grid;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .player {
+        height: 100vh;
+        top: -10px;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .dashboard {
+        left: 50%;
+        transform: translate(-50%, 0%);
+        position: absolute;
+        max-width: 85%;
+        height: auto;
+    }
+
+    header h4 {
+        font-size: 14px;
+    }
+
+    header h2 {
+        font-size: 18px;
+    }
+
+    .cd {
+        width: 150px;
+        margin-bottom: 10px;
+    }
+
+    .control {
+        padding: 10px 0 4px 0;
+    }
+
+    .control .btn {
+        padding: 12px;
+        font-size: 18px;
+    }
+
+    .progress {
+        height: 4px;
+    }
+
+    .playlist {
+        margin-top: 513px;
+        position: relative;
+        padding: 0px 24px 24px 24px;
+        height: 148px;
+    }
+
+    .song {
+        height: fit-content;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+    }
+
+    .song .thumb {
+        width: 40px;
+        height: 40px;
+    }
+
+    .song .body {
+        padding: 0 10px;
+    }
+
+    .song .title {
+        font-size: 16px;
+    }
+
+    .song .author {
+        font-size: 12px;
+    }
+
+    .song .option {
+        padding: 12px 6px;
+        font-size: 18px;
+    }
+}
+
+/* Ipad Mini */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    body {
+        background-color: #f5f5f5;
+    }
+
+    .app-container {
+        display: grid;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .player {
+        height: 100vh;
+        top: -10px;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .dashboard {
+        left: 50%;
+        transform: translate(-50%, 0%);
+        position: absolute;
+        max-width: 100%;
+    }
+
+    header h4 {
+        font-size: 14px;
+    }
+
+    header h2 {
+        font-size: 18px;
+    }
+
+    .cd {
+        width: 150px;
+        margin-bottom: 10px;
+    }
+
+    .control {
+        padding: 10px 0 4px 0;
+    }
+
+    .control .btn {
+        padding: 12px;
+        font-size: 18px;
+    }
+
+    .progress {
+        height: 4px;
+    }
+
+    .playlist {
+        margin-top: 513px;
+        position: relative;
+        padding: 0px 24px 24px 24px;
+        height: 500px;
+    }
+
+    .song {
+        height: fit-content;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+    }
+
+    .song .thumb {
+        width: 40px;
+        height: 40px;
+    }
+
+    .song .body {
+        padding: 0 10px;
+    }
+
+    .song .title {
+        font-size: 16px;
+    }
+
+    .song .author {
+        font-size: 12px;
+    }
+
+    .song .option {
+        padding: 12px 6px;
+        font-size: 18px;
+    }
+}
+
+/* Iphone SE
+@media only screen and (max-width: 375px) {
     body {
         background-color: #f5f5f5;
     }
@@ -343,9 +616,7 @@ header h2 {
     }
 
     .playlist {
-        margin-top: calc(138% + 24px);
-        padding: 0px 24px 24px 24px;
-        height: 145px;
+       
     }
 
     .song {
@@ -376,4 +647,4 @@ header h2 {
         padding: 12px 6px;
         font-size: 18px;
     }
-}
+} */
