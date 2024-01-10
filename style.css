@@ -10,7 +10,6 @@
 }
 
 body {
-    height: 100%;
     transition: all 0.5s linear;
     background: url(https://nhadepso.com/wp-content/uploads/2023/01/note-ngay-50-anh-bau-troi-buon-dep-tam-trang-tinh-mich_18.jpg)
         no-repeat;
@@ -291,8 +290,8 @@ header h2 {
     font-size: 18px;
 }
 
-/* Iphone SE */
-@media only screen and (min-width: 375px) and (max-width: 667px) {
+/* Ipad Mini */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
     body {
         background-color: #f5f5f5;
     }
@@ -315,8 +314,7 @@ header h2 {
         left: 50%;
         transform: translate(-50%, 0%);
         position: absolute;
-        max-width: 85%;
-        height: auto;
+        max-width: 100%;
     }
 
     header h4 {
@@ -346,10 +344,10 @@ header h2 {
     }
 
     .playlist {
-        margin-top: 521px;
+        margin-top: 461px;
         position: relative;
         padding: 0px 24px 24px 24px;
-        height: 148px;
+        height: 400px;
     }
 
     .song {
@@ -383,7 +381,7 @@ header h2 {
 }
 
 /* Iphone 6/7/8 plus */
-@media only screen and (min-width: 414px) and (max-width: 736px) {
+@media only screen and (min-width: 668px) and (max-width: 767px) {
     body {
         background-color: #f5f5f5;
     }
@@ -441,11 +439,102 @@ header h2 {
         margin-top: 468px;
         position: relative;
         padding: 0px 24px 24px 24px;
-        height: 166px;
+        height: 149px;
     }
 
     .song {
         overflow: hidden;
+        height: fit-content;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+    }
+
+    .song .thumb {
+        width: 40px;
+        height: 40px;
+    }
+
+    .song .body {
+        padding: 0 10px;
+    }
+
+    .song .title {
+        font-size: 16px;
+    }
+
+    .song .author {
+        font-size: 12px;
+    }
+
+    .song .option {
+        padding: 12px 6px;
+        font-size: 18px;
+    }
+}
+
+/* Iphone SE */
+@media only screen and (min-width: 375px) and (max-width: 667px) {
+    body {
+        background-color: #f5f5f5;
+    }
+
+    .app-container {
+        display: grid;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .player {
+        height: 100vh;
+        top: -10px;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .dashboard {
+        left: 50%;
+        transform: translate(-50%, 0%);
+        position: absolute;
+        max-width: 85%;
+        height: auto;
+    }
+
+    header h4 {
+        font-size: 14px;
+    }
+
+    header h2 {
+        font-size: 18px;
+    }
+
+    .cd {
+        width: 150px;
+        margin-bottom: 10px;
+    }
+
+    .control {
+        padding: 10px 0 4px 0;
+    }
+
+    .control .btn {
+        padding: 12px;
+        font-size: 18px;
+    }
+
+    .progress {
+        height: 4px;
+    }
+
+    .playlist {
+        margin-top: 465px;
+        position: relative;
+        padding: 0px 24px 24px 24px;
+        height: 181px;
+    }
+
+    .song {
         height: fit-content;
         padding: 10px;
         margin-bottom: 10px;
@@ -489,7 +578,7 @@ header h2 {
     }
 
     .player {
-        height: 100%;
+        height: 100vh;
         top: -10px;
         width: 100%;
         max-width: 400px;
@@ -530,100 +619,10 @@ header h2 {
     }
 
     .playlist {
-        margin-top: 513px;
+        margin-top: 471px;
         position: relative;
         padding: 0px 24px 24px 24px;
-        height: 148px;
-    }
-
-    .song {
-        height: fit-content;
-        padding: 10px;
-        margin-bottom: 10px;
-        border-radius: 8px;
-    }
-
-    .song .thumb {
-        width: 40px;
-        height: 40px;
-    }
-
-    .song .body {
-        padding: 0 10px;
-    }
-
-    .song .title {
-        font-size: 16px;
-    }
-
-    .song .author {
-        font-size: 12px;
-    }
-
-    .song .option {
-        padding: 12px 6px;
-        font-size: 18px;
-    }
-}
-
-/* Ipad Mini */
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-    body {
-        background-color: #f5f5f5;
-    }
-
-    .app-container {
-        display: grid;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-    }
-
-    .player {
-        height: 100%;
-        top: -10px;
-        width: 100%;
-        max-width: 400px;
-    }
-
-    .dashboard {
-        left: 50%;
-        transform: translate(-50%, 0%);
-        position: absolute;
-        max-width: 100%;
-    }
-
-    header h4 {
-        font-size: 14px;
-    }
-
-    header h2 {
-        font-size: 18px;
-    }
-
-    .cd {
-        width: 150px;
-        margin-bottom: 10px;
-    }
-
-    .control {
-        padding: 10px 0 4px 0;
-    }
-
-    .control .btn {
-        padding: 12px;
-        font-size: 18px;
-    }
-
-    .progress {
-        height: 4px;
-    }
-
-    .playlist {
-        margin-top: 490px;
-        position: relative;
-        padding: 0px 24px 24px 24px;
-        height: 400px;
+        height: 156px;
     }
 
     .song {
