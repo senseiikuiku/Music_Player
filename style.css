@@ -38,6 +38,7 @@ html {
 }
 
 .shine > i {
+    display: inline-block;
     font-size: 25px;
     padding: 5px;
 }
@@ -304,7 +305,6 @@ header h2 {
     }
 
     .player {
-        height: 100%;
         top: -10px;
         width: 100%;
         max-width: 400px;
@@ -394,7 +394,7 @@ header h2 {
     }
 
     .player {
-        height: 100%;
+        height: 100vh;
         top: -10px;
         width: 100%;
         max-width: 400px;
